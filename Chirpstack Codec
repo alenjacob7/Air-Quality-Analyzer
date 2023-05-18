@@ -1,0 +1,19 @@
+function decodeUplink(input)
+{
+  return {
+      data : Decode(input.bytes)
+    };
+}
+
+function Decode(bytes)
+{
+  var decoded = {};
+  decoded.MQ135 = ((bytes[0]<<8) + bytes[1]);
+  decoded.temperature = bytes[2];
+  decoded.humidity = bytes[3];
+  decoded.pressure = (bytes[4]<<8) + bytes[5];
+  decoded.PM2_5 = bytes[6];
+  decoded.PM10 = bytes[7];
+  return decoded;
+ 
+}
